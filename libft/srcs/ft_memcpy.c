@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tobarite <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/09 14:28:35 by tobarite          #+#    #+#             */
-/*   Updated: 2019/10/09 14:29:09 by tobarite         ###   ########.fr       */
+/*   Created: 2019/10/09 14:16:16 by tobarite          #+#    #+#             */
+/*   Updated: 2019/10/09 14:27:39 by tobarite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
+void	*memcpy(void *dest, const void *src, size_t n)
 {
-	unsigned int	count;
-	unsigned int	i;
+	int		i;
+	char	*hum;
 
-	count = 0;
 	i = 0;
-	while (src[count] != '\0')
-		++count;
-	while (src[i] != '\0' && i < (size - 1))
+	if (src == NULL)
+		return (NULL);
+	hum = dest;
+	while (n && src[i])
 	{
-		dest[i] = src[i];
-		++i;
+		hum[i] = src[i];
+		i++;
+		n--;
 	}
-	dest[i] = '\0';
-	return (count);
+	return (dest);
 }
