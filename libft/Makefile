@@ -5,100 +5,38 @@
 #                                                     +:+ +:+         +:+      #
 #    By: tobarite <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/10/08 20:44:09 by tobarite          #+#    #+#              #
+#    Created: 2019/10/08 14:44:09 by tobarite          #+#    #+#              #
 #                                                     ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
-PATH_SRC = ./
-PATH_OBJ = ./
 
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror -Ofast -I ./includes/
+SRC = $(PATH)ft_abs.c $(PATH)ft_atoi.c $(PATH)ft_bzero.c $(PATH)ft_isalnum.c $(PATH)ft_isalpha.c $(PATH)ft_isascii.c \
+	  $(PATH)ft_isblank.c $(PATH)ft_isdigit.c $(PATH)ft_islower.c $(PATH)ft_isnumber.c $(PATH)ft_isprint.c \
+	  $(PATH)ft_isspace.c $(PATH)ft_isupper.c $(PATH)ft_isxdigit.c $(PATH)ft_itoa.c $(PATH)ft_lstadd.c \
+	  $(PATH)ft_lstdel.c $(PATH)ft_lstdelone.c $(PATH)ft_lstiter.c $(PATH)ft_lstmap.c $(PATH)ft_lstnew.c \
+	  $(PATH)ft_memalloc.c $(PATH)ft_memccpy.c $(PATH)ft_memchr.c $(PATH)ft_memcmp.c $(PATH)ft_memcpy.c \
+	  $(PATH)ft_memdel.c $(PATH)ft_memmove.c $(PATH)ft_memset.c $(PATH)ft_putchar.c $(PATH)ft_putchar_fd.c \
+	  $(PATH)ft_putendl.c $(PATH)ft_putendl_fd.c $(PATH)ft_putnbr.c $(PATH)ft_putnbr_fd.c $(PATH)ft_putstr.c \
+	  $(PATH)ft_putstr_fd.c $(PATH)ft_strcat.c $(PATH)ft_strchr.c $(PATH)ft_strclr.c $(PATH)ft_strcmp.c \
+	  $(PATH)ft_strcpy.c $(PATH)ft_strdel.c $(PATH)ft_strdup.c $(PATH)ft_strequ.c $(PATH)ft_striter.c \
+	  $(PATH)ft_striteri.c $(PATH)ft_strjoin.c $(PATH)ft_strlcat.c $(PATH)ft_strlen.c $(PATH)ft_intlen.c \
+	  $(PATH)ft_strmap.c $(PATH)ft_strmapi.c $(PATH)ft_strncat.c $(PATH)ft_strncmp.c $(PATH)ft_strncpy.c \
+	  $(PATH)ft_strnequ.c $(PATH)ft_strnew.c $(PATH)ft_strnstr.c $(PATH)ft_strrchr.c $(PATH)ft_strsplit.c \
+	  $(PATH)ft_strstr.c $(PATH)ft_strsub.c $(PATH)ft_strtrim.c $(PATH)ft_tolower.c $(PATH)ft_toupper.c \
+	  $(PATH)ft_lstaddnext.c
 
-SRC = 	$(PATH_SRC)ft_strlen.c \
-		$(PATH_SRC)ft_strdup.c \
-		$(PATH_SRC)ft_strcpy.c\
-		$(PATH_SRC)ft_strncpy.c \
-		$(PATH_SRC)ft_strcat.c \
-		$(PATH_SRC)ft_strncat.c \
-		$(PATH_SRC)ft_strlcat.c \
-		$(PATH_SRC)ft_strchr.c \
-		$(PATH_SRC)ft_strrchr.c\
-		$(PATH_SRC)ft_isalpha.c \
-		$(PATH_SRC)ft_isdigit.c \
-		$(PATH_SRC)ft_isalnum.c\
-		$(PATH_SRC)ft_isascii.c \
-		$(PATH_SRC)ft_isprint.c \
-		$(PATH_SRC)ft_toupper.c \
-		$(PATH_SRC)ft_tolower.c \
-		$(PATH_SRC)ft_strstr.c \
-		$(PATH_SRC)ft_memset.c \
-		$(PATH_SRC)ft_bzero.c \
-		$(PATH_SRC)ft_memcpy.c \
-		$(PATH_SRC)ft_memccpy.c\
-		$(PATH_SRC)ft_memmove.c \
-		$(PATH_SRC)ft_memchr.c \
-		$(PATH_SRC)ft_memcmp.c \
-		$(PATH_SRC)ft_strcmp.c \
-		$(PATH_SRC)ft_strncmp.c \
-		$(PATH_SRC)ft_strnstr.c\
-		$(PATH_SRC)ft_strreplace_char.c\
-		$(PATH_SRC)ft_atoi.c \
-		$(PATH_SRC)ft_atol.c \
-		$(PATH_SRC)ft_memalloc.c \
-		$(PATH_SRC)ft_memdel.c \
-		$(PATH_SRC)ft_strnew.c \
-		$(PATH_SRC)ft_strdel.c \
-		$(PATH_SRC)ft_strclr.c \
-		$(PATH_SRC)ft_striter.c \
-		$(PATH_SRC)ft_striteri.c \
-		$(PATH_SRC)ft_strmap.c \
-		$(PATH_SRC)ft_strmapi.c \
-		$(PATH_SRC)ft_strequ.c \
-		$(PATH_SRC)ft_strnequ.c \
-		$(PATH_SRC)ft_strsub.c \
-		$(PATH_SRC)ft_strjoin.c \
-		$(PATH_SRC)ft_str_arrjoin.c \
-		$(PATH_SRC)ft_str_arrfree.c \
-		$(PATH_SRC)ft_str_multjoin.c \
-		$(PATH_SRC)ft_str_multfree.c \
-		$(PATH_SRC)ft_str_toupper.c \
-		$(PATH_SRC)ft_strjoin_free_l.c \
-		$(PATH_SRC)ft_strjoin_free_r.c \
-		$(PATH_SRC)ft_strjoin_free_lr.c \
-		$(PATH_SRC)ft_strtrim.c \
-		$(PATH_SRC)ft_strsplit.c \
-		$(PATH_SRC)ft_itoa.c \
-		$(PATH_SRC)ft_putchar.c \
-		$(PATH_SRC)ft_putstr.c \
-		$(PATH_SRC)ft_putendl.c \
-		$(PATH_SRC)ft_putnbr.c \
-		$(PATH_SRC)ft_putchar_fd.c \
-		$(PATH_SRC)ft_putstr_fd.c \
-		$(PATH_SRC)ft_putendl_fd.c \
-		$(PATH_SRC)ft_putnbr_fd.c \
-		$(PATH_SRC)ft_puthexa.c \
-		$(PATH_SRC)ft_lstnew.c \
-		$(PATH_SRC)ft_lstdelone.c \
-		$(PATH_SRC)ft_lstdel.c \
-		$(PATH_SRC)ft_lstadd.c \
-		$(PATH_SRC)ft_lstiter.c \
-		$(PATH_SRC)ft_lstmap.c \
-		$(PATH_SRC)ft_get_next_line.c \
-		$(PATH_SRC)ft_arrlen.c \
-		$(PATH_SRC)ft_arrcpy.c \
-		$(PATH_SRC)ft_arrfree.c \
-		$(PATH_SRC)ft_error.c \
-		$(PATH_SRC)ft_str_count_char.c 
+OBJ = $(subst .c,.o,$(SRC))
 
-OBJ = $(patsubst %.c,%.o,$(SRC))
+PATH = srcs/
+
+CFLAGS = -Wall -Werror -Wextra
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-#	$(CC) -Wall -Wextra -Werror -c $(SRC)
+$(NAME):
+	gcc $(CFLAGS) -c $(SRC)
 	ar rc $(NAME) $(OBJ)
 	ranlib $(NAME)
 
@@ -109,3 +47,5 @@ fclean: clean
 	/bin/rm -f $(NAME)
 
 re: fclean all
+
+.PHONY: clean fclean all re
