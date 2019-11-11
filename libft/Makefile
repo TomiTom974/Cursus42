@@ -17,7 +17,8 @@ SRC = $(PATH)ft_atoi.c $(PATH)ft_bzero.c $(PATH)ft_isalnum.c $(PATH)ft_isalpha.c
 	$(PATH)ft_memchr.c $(PATH)ft_memcmp.c $(PATH)ft_memccpy.c $(PATH)ft_memmove.c \
 	$(PATH)ft_memset.c $(PATH)ft_strchr.c $(PATH)ft_strlcat.c $(PATH)ft_strlcpy.c \
 	$(PATH)ft_strlen.c $(PATH)ft_strncmp.c $(PATH)ft_strnstr.c $(PATH)ft_tolower.c \
-	$(PATH)ft_toupper.c
+	$(PATH)ft_toupper.c $(PATH)ft_substr.c $(PATH)ft_strjoin.c $(PATH)ft_split.c \
+	$(PATH)ft_strtrim.c
 
 OBJ = $(subst .c,.o,$(SRC))
 
