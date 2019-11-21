@@ -6,13 +6,11 @@
 /*   By: tobarite <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 14:43:52 by tobarite          #+#    #+#             */
-/*   Updated: 2019/11/21 15:15:39 by tobarite         ###   ########.fr       */
+/*   Updated: 2019/11/21 15:42:49 by tobarite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "unistd.h"
 #include "stdlib.h"
-#include "stdio.h"
 
 int		ft_strlen(char const *str)
 {
@@ -47,6 +45,20 @@ int		occurence(char const *s1, char const *s2)
 	return (oc);
 }
 
+int		check(char const c, char const *s1)
+{
+	int i;
+
+	i = 0;
+	while (s1[i])
+	{
+		if (s1[i] == c)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	int		i;
@@ -62,16 +74,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	k = 0;
 	while (s1[i])
 	{
-		while (set[j])
-		{
-			if (s1[i] == set[j])
-			{
-				i++;
-				j = 0;
-			}
-			j++;
-		}
-		j = 0;
+		while (check(s1[i], set) == 1)
+			i++;
 		final[k] = s1[i];
 		k++;
 		i++;
