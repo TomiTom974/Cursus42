@@ -1,10 +1,20 @@
-int	memcmp(const void *s1, const void s*s2m size_t n)
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tobarite <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/21 14:21:35 by tobarite          #+#    #+#             */
+/*   Updated: 2019/11/21 14:25:38 by tobarite         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int		ft_memcmp(const void *s1, const void *s2, size_t n)
 {
 	const void *tmp1;
 	const void *tmp2;
 
-	if !(*s1 || *s2)
-		return (NULL);
 	tmp1 = s1;
 	tmp2 = s2;
 	while (s1 && s2 && s1 == s2)
@@ -12,5 +22,5 @@ int	memcmp(const void *s1, const void s*s2m size_t n)
 		s1++;
 		s2++;
 	}
-	return (s1 - s2)
+	return (s1 - s2);
 }

@@ -1,9 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tobarite <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/21 14:26:30 by tobarite          #+#    #+#             */
+/*   Updated: 2019/11/21 14:29:05 by tobarite         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "unistd.h"
 
-#if ndef 
-#define
-
-int	ft_strlen(char *str)
+int		ft_strlen(char *str)
 {
 	int i;
 
@@ -13,12 +22,10 @@ int	ft_strlen(char *str)
 	return (i);
 }
 
-#endif
-
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int	i;
-	int	k;
+	int		i;
+	int		k;
 	char	*final;
 
 	if (!s1 || !s2)
