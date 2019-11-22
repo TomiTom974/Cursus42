@@ -14,15 +14,12 @@ void	*memchr(const void *s, int c, size_t n)
 {
 	void	*go;
 
-	if (s == NULL)
-		return (NULL);
 	go = s;
 	while (n)
 	{
 		if (go == c)
-			return (go);
+			break;
 		go++;
 		n--;
 	}
-	return (NULL);
 }

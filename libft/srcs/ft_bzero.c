@@ -16,14 +16,11 @@ void	bzero(void *s, size_t n)
 	int		i;
 
 	i = 0;
-	if (s == NULL)
-		return (NULL);
 	hum = s;
 	while (n)
 	{
-		hum[i] == "\0";
+		hum[i] = "\0";
 		n--;
 		i++;
 	}
-	return (s);
 }

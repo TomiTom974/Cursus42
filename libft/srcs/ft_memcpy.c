@@ -16,8 +16,6 @@ void	*memcpy(void *dest, const void *src, size_t n)
 	char	*hum;
 
 	i = 0;
-	if (src == NULL)
-		return (NULL);
 	hum = dest;
 	while (n && src[i])
 	{
@@ -25,5 +23,4 @@ void	*memcpy(void *dest, const void *src, size_t n)
 		i++;
 		n--;
 	}
-	return (dest);
 }
