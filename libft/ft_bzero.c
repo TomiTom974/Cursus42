@@ -10,7 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void	bzero(void *s, size_t n)
+#include "includes/libft.h"
+
+void	ft_bzero(void *s, size_t n)
 {
 	char	*hum;
 	int		i;

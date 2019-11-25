@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "unistd.h"
+#include "includes/libft.h"
 
 int		ft_strlen(char *str)
 {

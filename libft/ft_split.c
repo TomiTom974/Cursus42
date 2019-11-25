@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include "includes/libft.h"
 
 int		is_charset(char c, char *charset)
 {
