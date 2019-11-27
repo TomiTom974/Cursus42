@@ -19,11 +19,11 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n)
 
 	tmp1 = s1;
 	tmp2 = s2;
-	while (s1 && s2 && s1 == s2 && n)
+	while (tmp1 && tmp2 && tmp1 == tmp2 && n)
 	{
-		s1++;
-		s2++;
+		tmp1++;
+		tmp2++;
 		n--;
 	}
-	return (s1 - s2);
+	return (tmp1 - tmp2);
 }
