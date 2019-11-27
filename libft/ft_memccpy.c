@@ -6,7 +6,7 @@
 /*   By: tobarite <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 14:32:00 by tobarite          #+#    #+#             */
-/*   Updated: 2019/10/09 14:35:34 by tobarite         ###   ########.fr       */
+/*   Updated: 2019/11/27 17:55:25 by tobarite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,18 @@
 
 void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
 {
-	int		i;
-	char	*hum;
+	int			i;
+	char		*d;
+	const char	*s;
 
 	i = 0;
-	if (src == NULL)
+	s = src;
+	if (s == NULL)
 		return (NULL);
-	hum = dest;
-	while (src[i] && src[i] != c && n)
+	d = dest;
+	while (s[i] && s[i] != c && n)
 	{
-		hum[i] = src[i];
+		d[i] = s[i];
 		i++;
 		n--;
 	}

@@ -6,22 +6,12 @@
 /*   By: tobarite <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 14:43:52 by tobarite          #+#    #+#             */
-/*   Updated: 2019/11/21 15:42:49 by tobarite         ###   ########.fr       */
+/*   Updated: 2019/11/27 16:42:15 by tobarite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stdlib.h"
 #include "includes/libft.h"
-
-int		ft_strlen(char const *str)
-{
-	int i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
 
 int		occurence(char const *s1, char const *s2)
 {
@@ -71,7 +61,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	j = 0;
 	final = NULL;
 	k = occurence(s1, set);
-	final = malloc(sizeof(char) * (ft_strlen(s1) - k + 1));
+	final = malloc(sizeof(char) * (ft_strlen((char const *)s1) - k + 1));
 	k = 0;
 	while (s1[i])
 	{

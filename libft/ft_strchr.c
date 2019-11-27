@@ -6,7 +6,7 @@
 /*   By: tobarite <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 14:26:01 by tobarite          #+#    #+#             */
-/*   Updated: 2019/11/21 14:26:16 by tobarite         ###   ########.fr       */
+/*   Updated: 2019/11/27 17:53:22 by tobarite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,18 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	const char *tmp;
+	const char	*tmp;
+	int			i;
 
+	i = 0;
 	if (s == NULL)
 		return (NULL);
 	tmp = s;
-	while (++s)
+	while (s[i])
 	{
-		if (&s == c)
-			tmp = s;
+		if (s[i] == c)
+			return ((char *)s);
+		i++;
 	}
-	return (tmp);
+	return ((char *)tmp);
 }

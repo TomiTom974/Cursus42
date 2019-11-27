@@ -6,7 +6,7 @@
 /*   By: tobarite <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 14:39:48 by tobarite          #+#    #+#             */
-/*   Updated: 2019/10/09 14:42:41 by tobarite         ###   ########.fr       */
+/*   Updated: 2019/11/27 17:52:26 by tobarite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,20 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	int		i;
-	char	*tmp;
-	char	*ok;
+	int			i;
+	char		*tmp;
+	char		*ok;
+	const char	*source;
 
-	i = 0;
-	if (src == NULL)
-		return (NULL);
-	while (src[i])
-	{
-		tmp[i] = src[i];
-		i++;
-	}
+	tmp = 0;
+	source = src;
 	i = 0;
 	ok = dest;
-	while (tmp[i])
+	if (src == NULL)
+		return (NULL);
+	while (source[i] && n)
 	{
-		ok[i] = tmp[i];
+		ok[i] = source[i];
 		i++;
 	}
 	return (dest);

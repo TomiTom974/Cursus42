@@ -5,20 +5,19 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tobarite <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/09 14:14:15 by tobarite          #+#    #+#             */
-/*   Updated: 2019/10/09 14:26:10 by tobarite         ###   ########.fr       */
+/*   Created: 2019/11/27 16:16:13 by tobarite          #+#    #+#             */
+/*   Updated: 2019/11/27 16:37:14 by tobarite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "includes/libft.h"
 
-void			*calloc(size_t nmemb, size_t size)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-  char			*ptr;
+	char	*hey;
 
-  s = nmemb * size;
-  if ((ptr = malloc((unsigned int *)(nmemb * size))) == NULL)
-    return (NULL);
-  memset(ptr, 0, (unsigned int *)(nmemb * size));
-  return (ptr);
+	if (!(hey = malloc((unsigned long)(nmemb * size))))
+		return (0);
+	ft_memset(hey, 0, (unsigned long)(nmemb * size));
+	return (hey);
 }

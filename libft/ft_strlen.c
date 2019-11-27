@@ -6,13 +6,13 @@
 /*   By: tobarite <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 14:27:52 by tobarite          #+#    #+#             */
-/*   Updated: 2019/10/09 14:28:05 by tobarite         ###   ########.fr       */
+/*   Updated: 2019/11/27 16:42:37 by tobarite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-int	ft_strlen(char *str)
+int	ft_strlen(char const *str)
 {
 	int i;
 

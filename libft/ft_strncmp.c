@@ -6,7 +6,7 @@
 /*   By: tobarite <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 14:36:47 by tobarite          #+#    #+#             */
-/*   Updated: 2019/11/21 14:36:59 by tobarite         ###   ########.fr       */
+/*   Updated: 2019/11/27 16:50:09 by tobarite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	int i;
 
 	i = 0;
-	while (s1[i] && s2[i] && i != n)
+	while (s1[i] && s2[i] && i != (int)n)
 		i++;
 	return (s1[i] - s2[i]);
 }

@@ -6,7 +6,7 @@
 /*   By: tobarite <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 14:37:07 by tobarite          #+#    #+#             */
-/*   Updated: 2019/11/21 14:43:17 by tobarite         ###   ########.fr       */
+/*   Updated: 2019/11/27 16:49:41 by tobarite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,17 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	i = 0;
 	k = 0;
 	if (little == NULL)
-		return (big);
-	while (i != len && big[i])
+		return ((char *)big);
+	while (i != (int)len && big[i])
 	{
 		if (big[i] == little[i])
 			while (big[i + k] == little[i + k])
 			{
-				if (little[I + K + 1] == '\0')
-					return (big[i]);
+				if (little[i + k + 1] == '\0')
+					return ((char *)big);
 				k++;
 			}
 		i++;
 	}
+	return (0);
 }
