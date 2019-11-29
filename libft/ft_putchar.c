@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tobarite <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/27 18:09:00 by tobarite          #+#    #+#             */
-/*   Updated: 2019/11/29 15:06:37 by tobarite         ###   ########.fr       */
+/*   Created: 2019/11/29 15:25:26 by tobarite          #+#    #+#             */
+/*   Updated: 2019/11/29 15:28:20 by tobarite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-void	ft_putchar_fr(char c, int fd)
+void	ft_putchar(char c)
 {
-	write(fd, 0, c);
+	write(1, &c, 1);
 }

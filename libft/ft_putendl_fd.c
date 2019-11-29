@@ -6,8 +6,14 @@
 /*   By: tobarite <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 18:09:21 by tobarite          #+#    #+#             */
-/*   Updated: 2019/11/27 18:09:22 by tobarite         ###   ########.fr       */
+/*   Updated: 2019/11/29 15:12:21 by tobarite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "includes/libft.h"
 
+void	ft_putendl_fd(char *s, int fd)
+{
+	ft_putstr_fd(s, fd);
+	ft_putchar_fd('\n', fd);
+}

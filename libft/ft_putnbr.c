@@ -1,18 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tobarite <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/27 18:09:00 by tobarite          #+#    #+#             */
-/*   Updated: 2019/11/29 15:06:37 by tobarite         ###   ########.fr       */
+/*   Created: 2019/06/05 19:28:19 by tobarite          #+#    #+#             */
+/*   Updated: 2019/11/29 15:28:47 by tobarite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-void	ft_putchar_fr(char c, int fd)
+void	ft_putnbr(int nb)
 {
-	write(fd, 0, c);
+	if (nb < 0)
+	{
+		ft_putchar('-');
+		if (nb == -2147483648)
+		{
+			ft_putchar('2');
+			nb = -147483648;
+		}
+		nb = nb * -1;
+	}
+	if (nb >= 10)
+	{
+		ft_putnbr(nb / 10);
+		ft_putchar(nb % 10 + '0');
+	}
+	if (nb < 10 && nb >= 0)
+	{
+		ft_putchar(nb % 10 + '0');
+	}
 }

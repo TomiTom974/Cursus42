@@ -6,8 +6,20 @@
 /*   By: tobarite <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 18:09:10 by tobarite          #+#    #+#             */
-/*   Updated: 2019/11/27 18:09:12 by tobarite         ###   ########.fr       */
+/*   Updated: 2019/11/29 15:06:53 by tobarite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "includes/libft.h"
 
+void	ft_putstr_fd(char *s, int fd)
+{
+	int i;
+
+	i = 0;
+	while (s[i])
+	{
+		ft_putchar_fd(s[i], fd);
+		i++;
+	}
+}

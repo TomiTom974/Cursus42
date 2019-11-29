@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tobarite <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/27 18:09:00 by tobarite          #+#    #+#             */
-/*   Updated: 2019/11/29 15:06:37 by tobarite         ###   ########.fr       */
+/*   Created: 2019/11/29 14:45:02 by tobarite          #+#    #+#             */
+/*   Updated: 2019/11/29 14:51:10 by tobarite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
-
-void	ft_putchar_fr(char c, int fd)
+char	*ft_strcpy(char *dest, char *src)
 {
-	write(fd, 0, c);
+	int i;
+
+	i = 0;
+	while (src[i])
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
 }

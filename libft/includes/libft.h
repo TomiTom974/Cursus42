@@ -6,7 +6,7 @@
 /*   By: tobarite <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 16:25:37 by tobarite          #+#    #+#             */
-/*   Updated: 2019/11/27 18:02:25 by tobarite         ###   ########.fr       */
+/*   Updated: 2019/11/29 15:38:58 by tobarite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,17 @@ char			*ft_strtrim(char const *s1, char const *set);
 char			*ft_substr(char const *s, unsigned int start, size_t len);
 int				ft_tolower(int c);
 int				ft_toupper(int c);
+char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+void 			ft_putstr_fd(char *s, int fd);
+void 			ft_putchar_fd(char c, int fd);
+void			ft_putendl_fd(char *s, int fd);
+void			ft_putnbr_fd(int n, int fd);
+
+void			ft_putchar(char c);
+void			ft_putstr(char *str);
+void			ft_putnbr(int nb);
+char			*ft_strcpy(char	*dest, const char *src);
+
 typedef struct	s_list
 {
 	void	*content;
