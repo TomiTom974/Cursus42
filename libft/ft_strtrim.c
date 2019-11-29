@@ -53,12 +53,10 @@ int		check(char const c, char const *s1)
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	int		i;
-	int		j;
 	int		k;
 	char	*final;
 
 	i = 0;
-	j = 0;
 	final = NULL;
 	k = occurence(s1, set);
 	final = malloc(sizeof(char) * (ft_strlen((char const *)s1) - k + 1));
