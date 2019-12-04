@@ -6,11 +6,10 @@
 /*   By: tobarite <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/19 19:18:12 by tobarite          #+#    #+#             */
-/*   Updated: 2019/06/19 21:20:31 by tobarite         ###   ########.fr       */
+/*   Updated: 2019/12/04 18:10:22 by tobarite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "includes/libft.h"
 
 int		is_charset(char c, char *charset)
@@ -58,7 +57,7 @@ int		*strs_len(char *str, char *charset)
 
 	i = 0;
 	count = words_count(str, charset);
-	size = malloc(count * sizeof(int));
+	size = malloc((unsigned long)count * sizeof(int));
 	while (i <= count)
 	{
 		size[i] = 0;

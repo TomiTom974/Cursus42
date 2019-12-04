@@ -1,39 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tobarite <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/09 14:21:27 by tobarite          #+#    #+#             */
-/*   Updated: 2019/12/04 16:39:47 by tobarite         ###   ########.fr       */
+/*   Created: 2019/12/04 17:20:38 by tobarite          #+#    #+#             */
+/*   Updated: 2019/12/04 17:52:47 by tobarite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
-
-int		ft_atoi(char *str)
+char	*ft_strrchr(const char *s, int c)
 {
-	int i;
-	int neg;
-	int tot;
+	char	*ptn;
 
-	i = 0;
-	tot = 0;
-	neg = 1;
-	while (str[i] == '\t' || str[i] == '\n' ||
-		str[i] == '\r' || str[i] == '\v' ||
-		str[i] == '\f' || str[i] == ' ')
-		i++;
-	if (str[i] == '-')
+	ptn = 0;
+	while (*s)
 	{
-		neg = -1;
-		i++;
+		if (*s == c)
+			ptn = (char*)s;
+		++s;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		tot = (tot * 10) + str[i] - '0';
-		i++;
-	}
-	return (tot * neg);
+	if (ptn)
+		return (ptn);
+	if (c == '\0')
+		return ((char*)s);
+	return (0);
 }

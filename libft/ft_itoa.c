@@ -6,22 +6,11 @@
 /*   By: tobarite <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 15:49:40 by tobarite          #+#    #+#             */
-/*   Updated: 2019/11/21 16:26:33 by tobarite         ###   ########.fr       */
+/*   Updated: 2019/12/04 16:06:11 by tobarite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
-#include "stdlib.h"
-
-int		ft_strlen(char *str)
-{
-	int i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
 
 char	*rev(char *str)
 {

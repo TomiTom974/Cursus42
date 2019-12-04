@@ -6,17 +6,22 @@
 /*   By: tobarite <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/03 17:57:28 by tobarite          #+#    #+#             */
-/*   Updated: 2019/12/03 18:02:29 by tobarite         ###   ########.fr       */
+/*   Updated: 2019/12/04 17:27:43 by tobarite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
-
 # define LIBFT_H
-
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
+
+typedef struct	s_list
+{
+	void			*content;
+	size_t			content_size;
+	struct s_list	*next;
+}				t_list;
 
 int				ft_atoi(char *str);
 void			ft_bzero(void *s, size_t n);
@@ -51,17 +56,10 @@ void			ft_putstr_fd(char *s, int fd);
 void			ft_putchar_fd(char c, int fd);
 void			ft_putendl_fd(char *s, int fd);
 void			ft_putnbr_fd(int n, int fd);
-
 void			ft_putchar(char c);
 void			ft_putstr(char *str);
 void			ft_putnbr(int nb);
 char			*ft_strcpy(char	*dest, const char *src);
-
-typedef struct	s_list
-{
-	void			*content;
-	size_t			content_size;
-	struct s_list	*next;
-}				t_list;
+char			*strrch(const char *s, int c);
 
 #endif
