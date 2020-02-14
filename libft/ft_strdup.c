@@ -6,19 +6,22 @@
 /*   By: tobarite <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/12 17:11:56 by tobarite          #+#    #+#             */
-/*   Updated: 2019/12/03 18:07:08 by tobarite         ###   ########.fr       */
+/*   Updated: 2019/12/18 23:53:01 by tobarite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "libft.h"
 
-char	*ft_strdup(char *src)
+char	*ft_strdup(const char *s1)
 {
 	char	*str;
 	int		i;
+	char	*src;
 
+	src = (char *)s1;
 	i = 0;
-	str = (char *)malloc(sizeof(char) * (ft_strlen(src) + 1));
+	if (!(str = (char *)malloc(sizeof(char) * (ft_strlen(src) + 1))))
+		return (NULL);
 	while (src[i])
 	{
 		str[i] = src[i];

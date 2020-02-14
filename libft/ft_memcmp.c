@@ -6,24 +6,30 @@
 /*   By: tobarite <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 14:21:35 by tobarite          #+#    #+#             */
-/*   Updated: 2019/11/27 17:55:53 by tobarite         ###   ########.fr       */
+/*   Updated: 2019/12/16 19:21:56 by tobarite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "libft.h"
 
 int		ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	const void *tmp1;
-	const void *tmp2;
+	const unsigned char		*str1;
+	const unsigned char		*str2;
 
-	tmp1 = s1;
-	tmp2 = s2;
-	while (tmp1 && tmp2 && tmp1 == tmp2 && n)
+	if (s1 == s2 || n == 0)
+		return (0);
+	str1 = (const unsigned char *)s1;
+	str2 = (const unsigned char *)s2;
+	while (n--)
 	{
-		tmp1++;
-		tmp2++;
-		n--;
+		if ((unsigned int)*str1 != (unsigned int)*str2)
+			return (*str1 - *str2);
+		if (n)
+		{
+			str1++;
+			str2++;
+		}
 	}
-	return (tmp1 - tmp2);
+	return (0);
 }

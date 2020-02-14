@@ -6,23 +6,24 @@
 /*   By: tobarite <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 14:43:02 by tobarite          #+#    #+#             */
-/*   Updated: 2019/11/29 15:38:45 by tobarite         ###   ########.fr       */
+/*   Updated: 2019/12/13 17:24:52 by tobarite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "libft.h"
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
 	const char	*go;
+	size_t		i;
 
-	go = s;
-	while (n)
+	i = 0;
+	go = (const char *)s;
+	while (i < n)
 	{
-		if ((int)go == c)
-			break ;
-		go++;
-		n--;
+		if (go[i] == (const char)c)
+			return (void *)&go[i];
+		i++;
 	}
-	return ((void *)go);
+	return (NULL);
 }

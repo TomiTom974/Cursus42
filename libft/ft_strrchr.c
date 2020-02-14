@@ -5,25 +5,27 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tobarite <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/04 17:20:38 by tobarite          #+#    #+#             */
-/*   Updated: 2019/12/04 17:52:47 by tobarite         ###   ########.fr       */
+/*   Created: 2019/12/11 14:40:45 by tobarite          #+#    #+#             */
+/*   Updated: 2019/12/13 17:54:04 by tobarite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 char	*ft_strrchr(const char *s, int c)
 {
-	char	*ptn;
+	size_t	i;
 
-	ptn = 0;
-	while (*s)
+	i = 0;
+	while (s[i])
+		i++;
+	if (c == 0)
+		return ((char *)s + i);
+	while (i > 0)
 	{
-		if (*s == c)
-			ptn = (char*)s;
-		++s;
+		i--;
+		if (s[i] == c)
+			return ((char *)s + i);
 	}
-	if (ptn)
-		return (ptn);
-	if (c == '\0')
-		return ((char*)s);
-	return (0);
+	return (NULL);
 }

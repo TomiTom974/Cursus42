@@ -6,11 +6,13 @@
 /*   By: tobarite <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 14:45:02 by tobarite          #+#    #+#             */
-/*   Updated: 2019/11/29 14:51:10 by tobarite         ###   ########.fr       */
+/*   Updated: 2019/12/13 17:58:34 by tobarite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strcpy(char *dest, char *src)
+#include "libft.h"
+
+char	*ft_strcpy(char *dest, const char *src)
 {
 	int i;
 

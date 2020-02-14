@@ -6,34 +6,30 @@
 /*   By: tobarite <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 14:21:27 by tobarite          #+#    #+#             */
-/*   Updated: 2019/12/04 16:39:47 by tobarite         ###   ########.fr       */
+/*   Updated: 2019/12/19 02:00:39 by tobarite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "libft.h"
 
-int		ft_atoi(char *str)
+int		ft_atoi(const char *str)
 {
-	int i;
-	int neg;
-	int tot;
+	int	res;
+	int	neg;
 
-	i = 0;
-	tot = 0;
 	neg = 1;
-	while (str[i] == '\t' || str[i] == '\n' ||
-		str[i] == '\r' || str[i] == '\v' ||
-		str[i] == '\f' || str[i] == ' ')
-		i++;
-	if (str[i] == '-')
-	{
+	res = 0;
+	while (*str && (*str == ' ' || *str == '\n' || *str == '\t' ||
+			*str == '\v' || *str == '\f' || *str == '\r'))
+		++str;
+	if (*str == '-')
 		neg = -1;
-		i++;
-	}
-	while (str[i] >= '0' && str[i] <= '9')
+	if (*str == '-' || *str == '+')
+		++str;
+	while (*str && *str >= '0' && *str <= '9')
 	{
-		tot = (tot * 10) + str[i] - '0';
-		i++;
+		res = res * 10 + (*str - '0');
+		++str;
 	}
-	return (tot * neg);
+	return (res * neg);
 }
