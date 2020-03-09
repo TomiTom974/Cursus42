@@ -12,23 +12,6 @@
 
 #include "includes/ft_printf.h"
 
-t_aim	ft_preflag(const char *str, int pos)
-{
-	t_aim	p;
-
-	while (str[pos] != '.')
-		pos++;
-	if (str[pos - 1] >= '0'&& str[pos - 1] <= '9')
-	{
-		p.less = str[pos - 1] - '0';
-	}
-	if (str[pos + 1] >= '0'&& str[pos + 1] <= '9')
-	{
-		p.more = str[pos + 1] - '0';
-	}
-	return (p);
-}
-
 int				check(char c)
 {
 	char *tmp;
@@ -43,6 +26,35 @@ int				check(char c)
 		i++;
 	}
 	return(0);
+}
+
+t_aim	ft_preflag(const char *str, int pos)
+{
+	char	*tmp;
+	t_aim	p;
+	int i;
+
+	i = 0;
+	while (str[pos] == '0' || str[pos] == '-')
+		pos++;
+	while (str[pos] != '.' && (str[pos] >= '0' && str[pos] <= '9'))
+	{
+		tmp[i] = str[pos];
+		pos++;
+		i++;
+	}
+	p.less = ft_atoi((const char *)tmp);
+	printf("\nvaleur de less = %d\n", p.less);
+	i = 0;
+	while (!(check(str[pos])) && (str[pos] >= '0' && str[pos] <= '9'))
+	{
+		tmp[i] = str[pos];
+		pos++;
+		i++;
+	}
+	p.more = ft_atoi((const char *)tmp);
+	printf("valeur de more = %d\n", p.more);
+	return (p);
 }
 
 int				ft_parse(const char *str, int pos, va_list arg)
@@ -74,7 +86,9 @@ int				ft_printf(const char *str, ...)
 	while (str[++i])
 	{
 		if (str[i] == '%')
+		{
 			i = ft_parse(str, i, arg);
+		}
 		else
 			ft_putchar(str[i]);
 	}

@@ -41,6 +41,7 @@ void			ft_printf_d(const char *str, t_aim p, int pos, va_list arg);
 void			ft_putchar(char c);
 void			ft_putstr(char *str);
 void			ft_putnbr(int nb);
+int				ft_atoi(const char *str);
 char			*ft_itoa(int n);
 size_t			ft_strlen(const char *s);
 
