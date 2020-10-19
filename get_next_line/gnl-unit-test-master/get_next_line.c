@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tobarite <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/16 13:31:09 by tobarite          #+#    #+#             */
-/*   Updated: 2020/10/19 14:44:40 by tobarite         ###   ########.fr       */
+/*   Created: 2020/10/16 13:30:14 by tobarite          #+#    #+#             */
+/*   Updated: 2020/10/16 13:49:34 by tobarite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-#ifndef BUFF_SIZE
-# define BUFF_SIZE
-#endif
-# define GET_NEXT_LINE_H
-# include "stdlib.h"
-# include "unistd.h"
-# include "stdio.h"
+#include "get_next_line.h"
 
-int		get_next_line(const int fd, char **line);
+int		get_next_line(const int fd, char **line)
+{
+	int		i;
+	char	*buf;
 
-#endif
+	read(fd, buf, i);
+}
