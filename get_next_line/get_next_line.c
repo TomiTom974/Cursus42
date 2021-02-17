@@ -6,7 +6,7 @@
 /*   By: tobarite <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 13:16:29 by tobarite          #+#    #+#             */
-/*   Updated: 2020/10/22 17:48:54 by tobarite         ###   ########.fr       */
+/*   Updated: 2021/02/17 15:32:27 by tobarite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,107 +14,79 @@
 
 char	*ft_substr(char *s, unsigned int start, int len)
 {
-	char *str;
-	int i;
+	int		count;
+	int		size;
+	char	*tab;
 
-	i = len;
-	str = malloc(sizeof(char) * (len + 2));
-	s = s + start;
-	while (s && len > 0)
+	count = 0;
+	if (!s)
+		return (NULL);
+	if (ft_strlen(s) < (int)start)
+		return (ft_strdup(""));
+	size = ft_strlen(s + start);
+	if (size < len)
+		len = size;
+	if (!(tab = (char *)malloc((len + 1) * sizeof(char))))
+		return (NULL);
+	while (count < len)
 	{
-		str = s;
-		str++;
-		s++;
-		len--;
+		tab[count] = s[start + count];
+		count++;
 	}
-	*str = '\0';
-	return (str - i);
+	tab[count] = '\0';
+	return (tab);
 }
 
-int		ft_strlen(char *str)
+int		ft_check(char *str)
 {
 	int i;
 
 	i = 0;
 	while (str[i])
 	{
+		if (str[i] == '\n')
+			return (0);
+		if (str[i] == '\0')
+			return (2);
 		i++;
 	}
-	return (i);
+	return (1);
 }
 
-int		ft_check_buf(char *buf)
+int		ft_strlen_n(char *str)
 {
 	int i;
 
 	i = 0;
-	while (buf[i])
-	{
-		if (buf[i] == '\n')
-		{
-			return (0);
-		}
+	while (str[i] != '\n')
 		i++;
-	}
-	return (1);
-}
-
-void	ft_task(char *stat, char **line)
-{
-	int		i;
-
-	i = 0;
-	while (stat[i] != '\n' && stat[i] != '\0')
-	{
-		i++;
-	}
-	printf("\nVoici ce que contient la stat : %s\n", stat);
-	*line = ft_substr(stat, 0, i);
-	printf("\nVoici ce que contient la line : %s\nFIN DE LINE\n", *line);
+	return (i);
 }
 
 int		get_next_line(const int fd, char **line)
 {
-	char		buf[BUFF_SIZE];
-	static char	*stat;
+	static char	*stoc;
+	char		buf[BUFF_SIZE + 1];
+	int			v;
 	char		*tmp;
-	int			i;
-	int			y;
 
-
-	tmp = NULL;
-	stat = malloc(sizeof(char *));
-	i = 0;
-	y = ft_strlen(stat);
 	if (fd < 0 || BUFF_SIZE < 1 || line == NULL || read(fd, buf, 0))
 		return (-1);
-	while (ft_check_buf(stat))
+	tmp = NULL;
+	v = 1;
+	stoc = NULL;
+	while (v == 1)
 	{
+		v = ft_check(buf);
 		read(fd, buf, BUFF_SIZE);
-		i = 0;
-		while (i < BUFF_SIZE)
-		{
-			stat[y] = buf[i];
-			y++;
-			i++;
-		}
+		if (v == 1 || v == 0)
+			stoc = ft_strjoin(stoc, buf);
+		if (v == 0)
+			stoc = ft_strjoin(stoc, ft_substr(buf, 0, ft_strlen_n(buf)));
+		*line = ft_substr(stoc, 0, ft_strlen_n(stoc));
 	}
-	ft_task(stat, line);
-	i = 0;
-	y = 0;
-	while (stat[i] != '\n' && stat[i])
-		i++;
-	if (stat[i])
-	{
-		while (stat[i])
-		{
-			tmp[y] = stat[i];
-			i++;
-			y++;
-		}
-		tmp[y] = '\0';
-		free(stat);
-		stat = tmp;
-	}
-	return (1);
+	if (v == 0)
+		return (1);
+	else
+		return (0);
 }
