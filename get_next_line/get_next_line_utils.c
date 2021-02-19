@@ -6,7 +6,7 @@
 /*   By: tobarite <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 15:30:08 by tobarite          #+#    #+#             */
-/*   Updated: 2021/02/17 15:32:04 by tobarite         ###   ########.fr       */
+/*   Updated: 2021/02/19 14:31:03 by tobarite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int		ft_strlen(char *str)
 	int i;
 
 	i = 0;
+	if (!str)
+		return (0);
 	while (str[i])
 		i++;
 	return (i);

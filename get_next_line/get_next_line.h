@@ -6,14 +6,14 @@
 /*   By: tobarite <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/16 13:31:09 by tobarite          #+#    #+#             */
-/*   Updated: 2021/02/17 15:32:00 by tobarite         ###   ########.fr       */
+/*   Updated: 2021/02/19 14:59:12 by tobarite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 # ifndef BUFF_SIZE
-#  define BUFF_SIZE 1
+#  define BUFF_SIZE 2
 # endif
 # include "stdlib.h"
 # include "unistd.h"
