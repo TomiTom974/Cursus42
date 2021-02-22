@@ -5,25 +5,23 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tobarite <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/16 13:31:09 by tobarite          #+#    #+#             */
-/*   Updated: 2021/02/19 14:59:12 by tobarite         ###   ########.fr       */
+/*   Created: 2021/02/22 13:49:46 by tobarite          #+#    #+#             */
+/*   Updated: 2021/02/22 14:59:19 by tobarite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-# ifndef BUFF_SIZE
-#  define BUFF_SIZE 2
-# endif
-# include "stdlib.h"
-# include "unistd.h"
-# include "stdio.h"
+# include <stdlib.h>
+# include <unistd.h>
+# include <stddef.h>
+# include <stdio.h>
 
-int		get_next_line(const int fd, char **line);
-int		ft_check(char *buf);
-int		ft_strlen(char *str);
-char	*ft_strdup(const char *s1);
-char	*ft_substr(char *s, unsigned int start, int len);
-char	*ft_strjoin(char *s1, char *s2);
+char			*ft_strchr(const char *s, int c);
+void			*ft_memcpy(void *dest, const void *src, int n);
+char			*ft_strdup(const char *s1);
+int				ft_strlen(char const *s);
+char			*ft_strjoin(char const *s1, char const *s2);
+int				get_next_line(int fd, char **line);
 
 #endif

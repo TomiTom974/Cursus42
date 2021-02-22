@@ -5,51 +5,51 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tobarite <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/17 15:30:08 by tobarite          #+#    #+#             */
-/*   Updated: 2021/02/19 14:31:03 by tobarite         ###   ########.fr       */
+/*   Created: 2021/02/22 13:52:41 by tobarite          #+#    #+#             */
+/*   Updated: 2021/02/22 15:03:49 by tobarite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int		ft_strlen(char *str)
+char	*ft_strchr(const char *s, int c)
 {
-	int i;
+	char	*str;
 
-	i = 0;
-	if (!str)
-		return (0);
-	while (str[i])
-		i++;
-	return (i);
+	str = (char *)s;
+	while (*str != c)
+	{
+		if (*str == '\0')
+		{
+			return (NULL);
+		}
+		str++;
+	}
+	return (str);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+void	*ft_memcpy(void *dest, const void *src, int n)
+{
+	char	*str1;
+	char	*str2;
+
+	str1 = (char *)dest;
+	str2 = (char *)src;
+	if (!n || dest == src)
+		return (dest);
+	while (n--)
+		*str1++ = *str2++;
+	return (dest);
+}
+
+int		ft_strlen(char const *s)
 {
 	int		i;
-	int		k;
-	char	*final;
 
-	if (!s1 || !s2)
-		return (NULL);
-	if (!(final = malloc(sizeof(char) * (ft_strlen(s1) + \
-				ft_strlen(s2) + 1))))
-		return (NULL);
 	i = 0;
-	k = 0;
-	while (s1[i])
-	{
-		final[i] = s1[i];
+	while (s[i])
 		i++;
-	}
-	while (s2[k])
-	{
-		final[i] = s2[k];
-		i++;
-		k++;
-	}
-	final[i] = '\0';
-	return (final);
+	return (i);
 }
 
 char	*ft_strdup(const char *s1)
