@@ -6,88 +6,62 @@
 /*   By: tobarite <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/22 13:48:49 by tobarite          #+#    #+#             */
-/*   Updated: 2021/02/22 15:33:49 by tobarite         ###   ########.fr       */
+/*   Updated: 2021/02/24 13:04:09 by tobarite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
-{
-	int		i;
-	int		k;
-	char	*final;
-
-	if (!s1 || !s2)
-		return (NULL);
-	if (!(final = malloc(sizeof(char) * (ft_strlen((char const *)s1) + \
-						ft_strlen((char const *)s2) + 1))))
-		return (NULL);
-	i = 0;
-	k = 0;
-	while (s1[i])
-	{
-		final[i] = s1[i];
-		i++;
-	}
-	while (s2[k])
-	{
-		final[i] = s2[k];
-		i++;
-		k++;
-	}
-	final[i] = '\0';
-	return (final);
-}
-
-int		ft_append_read(char *fds[65535], int fd, int buf)
+int		ft_task(char *fds[65535], int fd, int bs)
 {
 	char	*buffer;
-	char	*tmp;
+	char	*swap;
 	int		i;
+	int		j;
 
-	buffer = malloc(buf + 1 * sizeof(char));
-	i = buf + 1;
+	buffer = malloc(bs + 1 * sizeof(char));
+	i = bs + 1;
 	while (i > 0)
 		*(buffer + --i) = 0;
-	i = read(fd, buffer, buf);
+	i = read(fd, buffer, bs);
+	j = i < bs ? 0 : 1;
 	if (!fds[fd])
 	{
 		fds[fd] = malloc(1);
 		*fds[fd] = '\0';
 	}
-	tmp = fds[fd];
-	fds[fd] = ft_strjoin(tmp, buffer);
-	free(tmp);
+	swap = fds[fd];
+	fds[fd] = ft_strjoin(swap, buffer);
+	free(swap);
 	free(buffer);
 	return (i <= 0 ? i : 1);
 }
 
 int		get_next_line(int fd, char **line)
 {
-	static	char	*stat[65535];
-	char			*tmp;
-	int				len;
-	int				etat;
+	struct s_list	var;
+	static char		*fds[65535];
 
-	etat = 1;
-	while (!ft_strchr(stat[fd], '\n') && etat > 0)
-		eof = ft_append_read(stat, fd, BUFFER_SIZE);
-	if (etat >= 0)
+	var.eof = 1;
+	if (read(fd, *line, 0))
+		return (-1);
+	while (!ft_strchr(fds[fd], '\n') && var.eof > 0)
+		var.eof = ft_task(fds, fd, BUFFER_SIZE);
+	if (var.eof >= 0)
 	{
-		if (etat == 0)
-			len = ft_strchr(stat[fd], '\0') - stat[fd];
+		if (var.eof == 0)
+			var.line_len = ft_strchr(fds[fd], '\0') - fds[fd];
 		else
-			len = ft_strchr(stat[fd], '\n') - stat[fd];
-		if (!(*line = malloc((len + 1) * sizeof(char))))
+			var.line_len = ft_strchr(fds[fd], '\n') - fds[fd];
+		if (!(*line = malloc((var.line_len + 1) * sizeof(char))))
 			return (-1);
 		else
-			ft_memcpy(*line, stat[fd], len + 1);
-		if (etat > 0)
+			ft_memcpy(*line, fds[fd], var.line_len + 1);
+		if (var.eof > 0)
 			*(ft_strchr(*line, '\n')) = '\0';
-		tmp = etat == 0 ? 0 : ft_strdup(ft_strchr(stat[fd], '\n') + 1);
-		free(stat[fd]);
-		stat[fd] = etat == 0 ? 0 : tmp;
+		var.tmp = var.eof == 0 ? 0 : ft_strdup(ft_strchr(fds[fd], '\n') + 1);
+		free(fds[fd]);
+		fds[fd] = var.eof == 0 ? 0 : var.tmp;
 	}
-	return (etat);
+	return (var.eof);
 }

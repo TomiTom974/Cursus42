@@ -6,7 +6,7 @@
 /*   By: tobarite <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/22 13:52:41 by tobarite          #+#    #+#             */
-/*   Updated: 2021/02/22 15:03:49 by tobarite         ###   ########.fr       */
+/*   Updated: 2021/02/24 10:48:15 by tobarite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,59 +14,64 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	char	*str;
-
-	str = (char *)s;
-	while (*str != c)
-	{
-		if (*str == '\0')
-		{
-			return (NULL);
-		}
-		str++;
-	}
-	return (str);
-}
-
-void	*ft_memcpy(void *dest, const void *src, int n)
-{
-	char	*str1;
-	char	*str2;
-
-	str1 = (char *)dest;
-	str2 = (char *)src;
-	if (!n || dest == src)
-		return (dest);
-	while (n--)
-		*str1++ = *str2++;
-	return (dest);
-}
-
-int		ft_strlen(char const *s)
-{
-	int		i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
+	if (!s)
+		return (0);
+	while (*s)
+		if (*s++ == c)
+			return ((char*)s - 1);
+	if (c == '\0')
+		return ((char*)s);
+	return (0);
 }
 
 char	*ft_strdup(const char *s1)
 {
-	char	*str;
-	int		i;
-	char	*src;
+	char	*s2;
+	int		strlen;
 
-	src = (char *)s1;
-	i = 0;
-	if (!(str = (char *)malloc(sizeof(char) * (ft_strlen(src) + 1))))
-		return (NULL);
-	while (src[i])
-	{
-		str[i] = src[i];
-		i++;
-	}
-	str[i] = '\0';
-	return (str);
+	if (!s1)
+		return (0);
+	strlen = 0;
+	while (s1[strlen])
+		strlen++;
+	if (!(s2 = malloc((strlen + 1) * sizeof(char))))
+		return (0);
+	while (*s1)
+		*s2++ = *s1++;
+	*s2 = '\0';
+	return (s2 - strlen);
+}
+
+char	*ft_strjoin(const char *s1, const char *s2)
+{
+	char	*joined_strs;
+	char	*joined_strs_addr;
+	int		s1_len;
+	int		s2_len;
+
+	s1_len = 0;
+	s2_len = 0;
+	while (s1 && s1[s1_len])
+		s1_len++;
+	while (s2 && s2[s2_len])
+		s2_len++;
+	if (!(joined_strs = malloc((s1_len + s2_len + 1) * sizeof(char))))
+		return (0);
+	joined_strs_addr = joined_strs;
+	while (s1_len--)
+		*joined_strs++ = *s1++;
+	while (s2_len--)
+		*joined_strs++ = *s2++;
+	*joined_strs = '\0';
+	return (joined_strs_addr);
+}
+
+void	*ft_memcpy(void *dst, const void *src, unsigned int n)
+{
+	void	*dst_addr;
+
+	dst_addr = dst;
+	while (n--)
+		*(unsigned char*)dst++ = *(unsigned char*)src++;
+	return (dst_addr);
 }
