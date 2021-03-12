@@ -103,14 +103,28 @@ void	ft_flag_s(va_list arg)
 void	ft_flag_d(const char *str, int i, va_list arg)
 {
 	int neg;
-
+	int space;
 
 	if (str[i] == '-')
+	{
 		neg = 1;
+		i++;
+	}
 	else
 		neg = 0;
-	i++;
-	
+	space = ft_atoi(&str[i])
+	if (neg == 1)
+	{
+		ft_putnbr(va_arg(arg, int));
+		while(space-- != 0)
+			ft_putchar(' ');
+	}
+	else
+	{
+		while(space-- != 0)
+			ft_putchar(' ');
+		ft_putnbr(va_arg(arg, int));
+	}
 }
 
 
