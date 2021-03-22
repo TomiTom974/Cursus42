@@ -6,19 +6,15 @@
 /*   By: tobarite <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 15:53:51 by tobarite          #+#    #+#             */
-/*   Updated: 2021/03/11 15:48:58 by tobarite         ###   ########.fr       */
+/*   Updated: 2021/03/22 17:19:07 by tobarite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-
-
 /*
- *                    [FONCTION DE LA LIBFT UTILES]
+**                    [FONCTION DE LA LIBFT UTILES]
 */
-
-
 
 void	ft_putchar(char c)
 {
@@ -37,58 +33,92 @@ void	ft_putstr(char *str)
 	}
 }
 
-void    ft_putnbr(int nb)
+int		ft_atoi(const char *str)
 {
-        if (nb < 0)
-        {
-                ft_putchar('-');
-                if (nb == -2147483648)
-                {
-                        ft_putchar('2');
-                        nb = -147483648;
-                }
-                nb = nb * -1;
-        }
-        if (nb >= 10)
-        {
-                ft_putnbr(nb / 10);
-                ft_putchar(nb % 10 + '0');
-        }
-        if (nb < 10 && nb >= 0)
-        {
-                ft_putchar(nb % 10 + '0');
-        }
+	int		res;
+	int		neg;
+
+	neg = 1;
+	res = 0;
+	while (*str && (*str == ' ' || *str == '\n' || *str == '\t' ||
+				*str == '\v' || *str == '\f' || *str == '\r'))
+		++str;
+	if (*str == '-')
+		neg = -1;
+	if (*str == '-' || *str == '+')
+		++str;
+	while (*str && *str >= '0' && *str <= '9')
+	{
+		res = res * 10 + (*str - '0');
+		++str;
+	}
+	return (res * neg);
 }
 
-int             ft_atoi(const char *str)
+char	*ft_strrev(char *str)
 {
-        int     res;
-        int     neg;
+	char	tmp;
+	int		i;
 
-        neg = 1;
-        res = 0;
-        while (*str && (*str == ' ' || *str == '\n' || *str == '\t' ||
-                        *str == '\v' || *str == '\f' || *str == '\r'))
-                ++str;
-        if (*str == '-')
-                neg = -1;
-        if (*str == '-' || *str == '+')
-                ++str;
-        while (*str && *str >= '0' && *str <= '9')
-        {
-                res = res * 10 + (*str - '0');
-                ++str;
-        }
-        return (res * neg);
+	i = 0;
+	while (i < (int)ft_strlen(str) / 2)
+	{
+		tmp = str[i];
+		str[i] = str[(int)ft_strlen(str) - i - 1];
+		str[(int)ft_strlen(str) - i - 1] = tmp;
+		i++;
+	}
+	return (str);
 }
 
+char	*ft_strdup(const char *s1)
+{
+	char	*str;
+	int		i;
+	char	*src;
 
+	src = (char *)s1;
+	i = 0;
+	if (!(str = (char *)malloc(sizeof(char) * (ft_strlen(src) + 1))))
+		return (NULL);
+	while (src[i])
+	{
+		str[i] = src[i];
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
+}
+
+char		*ft_itoa(int n)
+{
+	size_t	i;
+	char	*tot;
+	int		sign;
+
+	i = 0;
+	if (n == 0)
+		return (ft_strdup("0"));
+	if (!(tot = (char *)malloc(sizeof(char) * 12)))
+		return (0);
+	if (n < 0)
+		sign = 1;
+	else
+		sign = 0;
+	while (n != 0)
+	{
+		tot[i++] = (sign) ? (-1 * (n % 10)) + '0' : (n % 10) + '0';
+		n /= 10;
+	}
+	if (sign)
+		tot[i++] = '-';
+	tot[i] = '\0';
+	return (ft_strrev(tot));
+}
 
 /*
- *                    [FONCTION DE GESTION DES FLAGS]
+**                    [FONCTION DE GESTION DES FLAGS]
 */
-
-
 
 void	ft_flag_c(va_list arg)
 {
@@ -102,8 +132,8 @@ void	ft_flag_s(va_list arg)
 
 void	ft_flag_d(const char *str, int i, va_list arg)
 {
-	int neg;
-	int space;
+	int	neg;
+	int	space;
 
 	if (str[i] == '-')
 	{
@@ -112,28 +142,24 @@ void	ft_flag_d(const char *str, int i, va_list arg)
 	}
 	else
 		neg = 0;
-	space = ft_atoi(&str[i])
+	space = ft_atoi(&str[i]);
 	if (neg == 1)
 	{
 		ft_putnbr(va_arg(arg, int));
-		while(space-- != 0)
+		while (space-- != 0)
 			ft_putchar(' ');
 	}
 	else
 	{
-		while(space-- != 0)
+		while (space-- != 0)
 			ft_putchar(' ');
 		ft_putnbr(va_arg(arg, int));
 	}
 }
 
-
-
 /*
- *                    [FONCTIONS DE REPARTITION DES FLAGS]
+**                    [FONCTIONS DE REPARTITION DES FLAGS]
 */
-
-
 
 char	ft_parse_flag(const char *str, int i)
 {
@@ -144,7 +170,7 @@ char	ft_parse_flag(const char *str, int i)
 
 int		ft_post_flag(const char *str, int i, char c)
 {
-	while(str[i] != c)
+	while (str[i] != c)
 		i++;
 	return (i + 1);
 }
@@ -165,13 +191,9 @@ int		ft_flag(const char *str, int i, va_list arg)
 	return (ft_post_flag(str, i, flag));
 }
 
-
-
 /*
- *                    [FONCTION PRINTF MERE]
+**                    [FONCTION PRINTF MERE]
 */
-
-
 
 int		ft_printf(const char *str, ...)
 {
@@ -180,7 +202,7 @@ int		ft_printf(const char *str, ...)
 
 	i = 0;
 	va_start(arg, str);
-	while(str[i])
+	while (str[i])
 	{
 		if (str[i] == '%')
 			i = ft_flag(str, i + 1, arg);

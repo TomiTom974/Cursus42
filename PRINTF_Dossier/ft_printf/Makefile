@@ -6,45 +6,41 @@
 #    By: tobarite <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/02 15:51:55 by tobarite          #+#    #+#              #
-#    Updated: 2021/03/02 16:38:41 by tobarite         ###   ########.fr        #
+#    Updated: 2021/03/22 17:00:28 by tobarite         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = printf.a
+NAME = libftprintf.a
 
 CC = gcc
-
-INCLUDE = -I./includes
 
 FLAGS = -Wall -Wextra -Werror -Weverything -Wpedantic
 
 OBJ = $(SRCS:.c=.o)
 
-SRCS = printf.c\
-	   sources/*.c
+SRCS = printf.c
 
-all:
-	${NAME}
 
-${NAME}:
-		$(OBJ)
-		$(MAKE) -C ./libft
-		cp ./libft/libft.a $(NAME)
-		$(CC) $(FLAGS) $(INCLUDE) $(SRCS)
-		ar -rcs $(NAME) $(OBJ)
+
+all: ${NAME}
+
+
+${NAME}: $(OBJ)
+		 $(CC) -c $(FLAGS) $(SRCS)
+		 ar -rcs $(NAME) $(OBJ)
+
 
 clean:
-	$(MAKE) clean -C ./libft
 	rm -rf $(OBJ)
 
 
-fclean:
-	clean
-	$(make) fclean -C ./libft
+fclean: clean
 	rm -rf $(NAME)
 
-re:
-	fclean
-	all
+
+re: fclean
+	make 
+
+
 
 .PHONY: all clean fclean re
